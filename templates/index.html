@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #a5d6a7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            width: 420px;
+            text-align: center;
+        }
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        button {
+            padding: 12px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #1b5e20;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌱 Crop Recommendation</h1>
+        <form action="/predict" method="post">
+            <input type="text" name="Nitrogen" placeholder="Nitrogen (N)" required>
+            <input type="text" name="Phosporus" placeholder="Phosphorus (P)" required>
+            <input type="text" name="Potassium" placeholder="Potassium (K)" required>
+            <input type="text" name="Temperature" placeholder="Temperature (°C)" required>
+            <input type="text" name="Humidity" placeholder="Humidity (%)" required>
+            <input type="text" name="Ph" placeholder="pH Value" required>
+            <input type="text" name="Rainfall" placeholder="Rainfall (mm)" required>
+            <button type="submit">Predict Crop</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
